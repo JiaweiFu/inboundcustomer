@@ -1,0 +1,194 @@
+<!--
+  ~ [y] hybris Platform
+  ~
+  ~ Copyright (c) 2000-2014 hybris AG
+  ~ All rights reserved.
+  ~
+  ~ This software is the confidential and proprietary information of hybris
+  ~ ("Confidential Information"). You shall not disclose such Confidential
+  ~ Information and shall use it only in accordance with the terms of the
+  ~ license agreement you entered into with hybris.
+  -->
+<extension xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.hybris.com/schema/"
+		   xsi:schemaLocation="http://www.hybris.com/schema/ datahub-metadata-schema-1.1.0.xsd" name="inboundcustomer-raw">
+
+	<dependencies>
+		<dependency>
+			<extension>inboundcustomer-canonical</extension>
+		</dependency>
+	</dependencies>
+
+	<rawItems>
+ 		<item>
+			<type>InboundRawCustomer</type>
+			<description>Raw representation of a CEC Customer</description>
+			<attributes>
+				<attribute>
+					<name>customerNumber</name>
+				</attribute>
+				<attribute>
+					<name>title</name>
+				</attribute>
+				<attribute>
+					<name>firstName</name>
+				</attribute>
+				<attribute>
+					<name>middleName</name>
+				</attribute>
+				<attribute>
+					<name>lastName</name>
+				</attribute>
+				<attribute>
+					<name>contactEmail</name>
+				</attribute>
+				<attribute>
+					<name>contactPhoneC</name>
+				</attribute>
+				<attribute>
+					<name>company</name>
+				</attribute>
+				<attribute>
+					<name>preferredLanguage</name>
+				</attribute>
+				<attribute>
+					<name>addressID</name>
+				</attribute>
+				<attribute>
+					<name>contactName</name>
+				</attribute>
+				<attribute>
+					<name>companyName</name>
+				</attribute>
+				<attribute>
+					<name>street</name>
+				</attribute>
+				<attribute>
+					<name>streetNumber</name>
+				</attribute>
+				<attribute>
+					<name>streetAppendix</name>
+				</attribute>
+				<attribute>
+					<name>zipCode</name>
+				</attribute>
+				<attribute>
+					<name>city</name>
+				</attribute>
+				<attribute>
+					<name>country</name>
+				</attribute>
+				<attribute>
+					<name>state</name>
+				</attribute>				
+			    <attribute>
+					<name>contactPhoneA</name>
+				</attribute>
+				<attribute>
+					<name>tag</name>
+				</attribute>
+				<attribute>
+					<name>isDefault</name>
+				</attribute>						
+			</attributes>
+		</item>
+		
+	</rawItems>
+
+	<canonicalItems>
+        <item>
+            <type>InboundCanonicalCustomer</type>
+            <attributes>
+                <attribute>
+                    <name>customerId</name>
+                    <transformations>
+                        <transformation>
+                            <rawSource>InboundRawCustomer</rawSource>
+                            <expression>customerNumber</expression>
+                        </transformation>
+                    </transformations>
+                </attribute>
+                <attribute>
+                    <name>name</name>
+                    <transformations>
+                        <transformation>
+                            <rawSource>InboundRawCustomer</rawSource>
+                            <expression>company</expression>
+                        </transformation>
+                    </transformations>
+                </attribute>
+            </attributes>
+        </item>
+        <item>
+			<type>InboundCanonicalContact</type>	
+			<attributes>
+				<attribute>
+					<name>contactId</name>
+					<transformations>
+						<transformation>
+							<rawSource>InboundRawCustomer</rawSource>
+							<expression>customerNumber</expression>
+						</transformation>
+					</transformations>
+				</attribute>
+				<attribute>
+					<name>customerId</name>
+					<transformations>
+						<transformation>
+							<rawSource>InboundRawCustomer</rawSource>
+							<expression>customerNumber</expression>
+						</transformation>
+					</transformations>
+				</attribute>
+
+				<attribute>
+					<name>titleCode</name>
+					<transformations>
+						<transformation>
+							<rawSource>InboundRawCustomer</rawSource>
+							<expression>title</expression>
+						</transformation>
+					</transformations>
+				</attribute>
+				<attribute>
+					<name>languageIsoCode</name>
+					<transformations>
+						<transformation>
+							<rawSource>InboundRawCustomer</rawSource>
+							<expression>preferredLanguage</expression>
+						</transformation>
+					</transformations>
+				</attribute>
+
+				<attribute>
+					<name>firstName</name>
+					<transformations>
+						<transformation>
+							<rawSource>InboundRawCustomer</rawSource>
+							<expression>firstName</expression>
+						</transformation>
+					</transformations>
+				</attribute>
+
+				<attribute>
+					<name>lastName</name>
+					<transformations>
+						<transformation>
+							<rawSource>InboundRawCustomer</rawSource>
+							<expression>lastName</expression>
+						</transformation>
+					</transformations>
+				</attribute>
+				<attribute>
+					<name>uid</name>
+					<transformations>
+						<transformation>
+							<rawSource>InboundRawCustomer</rawSource>
+							<expression>contactEmail</expression>
+						</transformation>
+					</transformations>
+				</attribute>
+			</attributes>
+		</item> 
+	</canonicalItems>
+
+</extension>

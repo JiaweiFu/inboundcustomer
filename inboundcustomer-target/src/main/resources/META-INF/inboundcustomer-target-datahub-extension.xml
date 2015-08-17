@@ -1,0 +1,150 @@
+<!--
+  ~ [y] hybris Platform
+  ~
+  ~ Copyright (c) 2000-2014 hybris AG
+  ~ All rights reserved.
+  ~
+  ~ This software is the confidential and proprietary information of hybris
+  ~ ("Confidential Information"). You shall not disclose such Confidential
+  ~ Information and shall use it only in accordance with the terms of the
+  ~ license agreement you entered into with hybris.
+  -->
+<extension xmlns="http://www.hybris.com/schema/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		   xsi:schemaLocation="http://www.hybris.com/schema/ datahub-metadata-schema-1.1.0.xsd" name="inboundcustomer-target">
+
+	<dependencies>
+		<dependency>
+			<extension>inboundcustomer-canonical</extension>
+		</dependency>
+	</dependencies>
+
+	<targetSystems>
+		<targetSystem>
+			<name>HybrisInboundCustomer</name>
+			<type>HybrisCore</type>
+			<exportURL>${datahub.extension.exportURL}</exportURL>
+			<userName>${datahub.extension.userName}</userName>
+			<password>${datahub.extension.password}</password>
+			<exportCodes>
+			</exportCodes>
+			<targetItems>
+				<item>
+                    <type>InboundTargetCustomer</type>
+                    <exportCode>B2BUnit</exportCode>
+                    <description>Hybris platform representation of a B2BUnit</description>
+                    <updatable>true</updatable>
+                    <canonicalItemSource>InboundCanonicalCustomer</canonicalItemSource>
+                    <status />
+                    <attributes>
+                        <attribute>
+                            <name>uid</name>
+                            <localizable>false</localizable>
+                            <collection>false</collection>
+                            <transformationExpression>integrationKey</transformationExpression>
+                            <exportCode>uid[unique=true]</exportCode>
+                            <mandatoryInHeader>true</mandatoryInHeader>
+                        </attribute>
+                        <attribute>
+                            <name>description</name>
+                            <localizable>false</localizable>
+                            <collection>false</collection>
+                            <transformationExpression>name</transformationExpression>
+                            <exportCode>description</exportCode>
+                            <mandatoryInHeader>true</mandatoryInHeader>
+                        </attribute>
+                        <attribute>
+                            <name>name</name>
+                            <localizable>false</localizable>
+                            <collection>false</collection>
+                            <transformationExpression>name</transformationExpression>
+                            <exportCode>name</exportCode>
+                            <mandatoryInHeader>true</mandatoryInHeader>
+                        </attribute>
+                        <attribute>
+                            <name>localizedName</name>
+                            <localizable>false</localizable>
+                            <collection>false</collection>
+                            <transformationExpression>name</transformationExpression>
+                            <exportCode>locName</exportCode>
+                            <mandatoryInHeader>true</mandatoryInHeader>
+                        </attribute>
+                        <attribute>
+                            <name>isBuyer</name>
+                            <localizable>false</localizable>
+                            <collection>false</collection>
+                            <transformationExpression>true</transformationExpression>
+                            <exportCode>buyer</exportCode>
+                            <mandatoryInHeader>true</mandatoryInHeader>
+                        </attribute>
+                    </attributes>
+                </item> 
+				<item>
+					<type>InboundTargetContact</type>
+					<exportCode>B2BCustomer</exportCode>
+					<description>Hybris platform representation of a B2BCustomer
+					</description>
+					<updatable>true</updatable>
+
+					<canonicalItemSource>InboundCanonicalContact</canonicalItemSource>
+					<status></status>
+					<!-- defaults to ACTIVE -->
+					<attributes>
+						<attribute>
+							<name>uid</name>
+							<localizable>false</localizable>
+							<collection>false</collection>
+							<transformationExpression>uid</transformationExpression>
+							<exportCode>uid</exportCode>
+							<mandatoryInHeader>true</mandatoryInHeader>
+						</attribute>
+						<attribute>
+							<name>defaultB2BUnit</name>
+							<localizable>false</localizable>
+							<collection>false</collection>
+							<transformationExpression>customerId</transformationExpression>
+							<exportCode>defaultB2BUnit(B2BUnit.uid)</exportCode>
+							<mandatoryInHeader>true</mandatoryInHeader>
+						</attribute>
+						<attribute>
+							<name>title</name>
+							<localizable>false</localizable>
+							<collection>false</collection>
+							<transformationExpression>title</transformationExpression>
+							<exportCode>title(Title.code)</exportCode>
+							<mandatoryInHeader>false</mandatoryInHeader>
+						</attribute>
+						<attribute>
+							<name>name</name>
+							<localizable>false</localizable>
+							<collection>false</collection>
+							<transformationExpression>firstName != '' || lastName != '' ? (firstName != '' ? firstName + " " + lastName :
+								lastName) : '' 
+							</transformationExpression>
+							<exportCode>name</exportCode>
+							<mandatoryInHeader>false</mandatoryInHeader>
+						</attribute>
+						<attribute>
+							<name>email</name>
+							<localizable>false</localizable>
+							<collection>false</collection>
+							<transformationExpression>uid</transformationExpression>
+							<exportCode>email</exportCode>
+							<mandatoryInHeader>false</mandatoryInHeader>
+						</attribute>
+
+						<attribute>
+							<name>customerId</name>
+							<localizable>false</localizable>
+							<collection>false</collection>
+							<transformationExpression>contactId</transformationExpression>
+							<exportCode>customerId[unique=true]</exportCode>
+							<mandatoryInHeader>false</mandatoryInHeader>
+						</attribute>
+
+					</attributes>
+				</item>
+			</targetItems>
+		</targetSystem>
+	</targetSystems>
+
+</extension>
