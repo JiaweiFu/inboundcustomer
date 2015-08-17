@@ -28,91 +28,34 @@
 			<exportCodes>
 			</exportCodes>
 			<targetItems>
-				<item>
-                    <type>InboundTargetCustomer</type>
-                    <exportCode>B2BUnit</exportCode>
-                    <description>Hybris platform representation of a B2BUnit</description>
-                    <updatable>true</updatable>
-                    <canonicalItemSource>InboundCanonicalCustomer</canonicalItemSource>
-                    <status />
-                    <attributes>
-                        <attribute>
-                            <name>uid</name>
-                            <localizable>false</localizable>
-                            <collection>false</collection>
-                            <transformationExpression>integrationKey</transformationExpression>
-                            <exportCode>uid[unique=true]</exportCode>
-                            <mandatoryInHeader>true</mandatoryInHeader>
-                        </attribute>
-                        <attribute>
-                            <name>description</name>
-                            <localizable>false</localizable>
-                            <collection>false</collection>
-                            <transformationExpression>name</transformationExpression>
-                            <exportCode>description</exportCode>
-                            <mandatoryInHeader>true</mandatoryInHeader>
-                        </attribute>
-                        <attribute>
-                            <name>name</name>
-                            <localizable>false</localizable>
-                            <collection>false</collection>
-                            <transformationExpression>name</transformationExpression>
-                            <exportCode>name</exportCode>
-                            <mandatoryInHeader>true</mandatoryInHeader>
-                        </attribute>
-                        <attribute>
-                            <name>localizedName</name>
-                            <localizable>false</localizable>
-                            <collection>false</collection>
-                            <transformationExpression>name</transformationExpression>
-                            <exportCode>locName</exportCode>
-                            <mandatoryInHeader>true</mandatoryInHeader>
-                        </attribute>
-                        <attribute>
-                            <name>isBuyer</name>
-                            <localizable>false</localizable>
-                            <collection>false</collection>
-                            <transformationExpression>true</transformationExpression>
-                            <exportCode>buyer</exportCode>
-                            <mandatoryInHeader>true</mandatoryInHeader>
-                        </attribute>
-                    </attributes>
-                </item> 
-				<item>
-					<type>InboundTargetContact</type>
-					<exportCode>B2BCustomer</exportCode>
-					<description>Hybris platform representation of a B2BCustomer
+ 				<item>
+					<type>InboundTargetCustomer</type>
+					<exportCode>Customer</exportCode>
+					<description>Hybris platform representation of a Customer
 					</description>
 					<updatable>true</updatable>
 
-					<canonicalItemSource>InboundCanonicalContact</canonicalItemSource>
+					<canonicalItemSource>InboundCanonicalCustomer</canonicalItemSource>
 					<status></status>
-					<!-- defaults to ACTIVE -->
 					<attributes>
 						<attribute>
 							<name>uid</name>
 							<localizable>false</localizable>
 							<collection>false</collection>
-							<transformationExpression>uid</transformationExpression>
+							<transformationExpression>UID</transformationExpression>
 							<exportCode>uid</exportCode>
 							<mandatoryInHeader>true</mandatoryInHeader>
 						</attribute>
-						<attribute>
-							<name>defaultB2BUnit</name>
-							<localizable>false</localizable>
-							<collection>false</collection>
-							<transformationExpression>customerId</transformationExpression>
-							<exportCode>defaultB2BUnit(B2BUnit.uid)</exportCode>
-							<mandatoryInHeader>true</mandatoryInHeader>
-						</attribute>
+
 						<attribute>
 							<name>title</name>
 							<localizable>false</localizable>
 							<collection>false</collection>
-							<transformationExpression>title</transformationExpression>
+							<transformationExpression>resolve('InboundCanonicalCustomer')?.title</transformationExpression>
 							<exportCode>title(Title.code)</exportCode>
 							<mandatoryInHeader>false</mandatoryInHeader>
 						</attribute>
+
 						<attribute>
 							<name>name</name>
 							<localizable>false</localizable>
@@ -123,26 +66,25 @@
 							<exportCode>name</exportCode>
 							<mandatoryInHeader>false</mandatoryInHeader>
 						</attribute>
-						<attribute>
-							<name>email</name>
-							<localizable>false</localizable>
-							<collection>false</collection>
-							<transformationExpression>uid</transformationExpression>
-							<exportCode>email</exportCode>
-							<mandatoryInHeader>false</mandatoryInHeader>
-						</attribute>
 
 						<attribute>
 							<name>customerId</name>
 							<localizable>false</localizable>
 							<collection>false</collection>
-							<transformationExpression>contactId</transformationExpression>
+							<transformationExpression>customerID</transformationExpression>
 							<exportCode>customerId[unique=true]</exportCode>
 							<mandatoryInHeader>false</mandatoryInHeader>
 						</attribute>
 
+						<attribute>
+							<name>sessionLanguage</name>
+							<transformationExpression>sessionLanguage.toLowerCase()</transformationExpression> 
+							<exportCode>sessionLanguage(Language.isocode)</exportCode>
+							<mandatoryInHeader>false</mandatoryInHeader>
+						</attribute>
+
 					</attributes>
-				</item>
+				</item>		
 			</targetItems>
 		</targetSystem>
 	</targetSystems>

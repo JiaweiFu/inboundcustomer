@@ -95,34 +95,11 @@
 	</rawItems>
 
 	<canonicalItems>
-        <item>
-            <type>InboundCanonicalCustomer</type>
-            <attributes>
-                <attribute>
-                    <name>customerId</name>
-                    <transformations>
-                        <transformation>
-                            <rawSource>InboundRawCustomer</rawSource>
-                            <expression>customerNumber</expression>
-                        </transformation>
-                    </transformations>
-                </attribute>
-                <attribute>
-                    <name>name</name>
-                    <transformations>
-                        <transformation>
-                            <rawSource>InboundRawCustomer</rawSource>
-                            <expression>company</expression>
-                        </transformation>
-                    </transformations>
-                </attribute>
-            </attributes>
-        </item>
-        <item>
-			<type>InboundCanonicalContact</type>	
+ 		<item>
+			<type>InboundCanonicalCustomer</type>
 			<attributes>
 				<attribute>
-					<name>contactId</name>
+					<name>customerID</name>
 					<transformations>
 						<transformation>
 							<rawSource>InboundRawCustomer</rawSource>
@@ -131,26 +108,16 @@
 					</transformations>
 				</attribute>
 				<attribute>
-					<name>customerId</name>
+					<name>phone1</name>
 					<transformations>
 						<transformation>
 							<rawSource>InboundRawCustomer</rawSource>
-							<expression>customerNumber</expression>
-						</transformation>
-					</transformations>
-				</attribute>
-
-				<attribute>
-					<name>titleCode</name>
-					<transformations>
-						<transformation>
-							<rawSource>InboundRawCustomer</rawSource>
-							<expression>title</expression>
+							<expression>contactPhoneC</expression>
 						</transformation>
 					</transformations>
 				</attribute>
 				<attribute>
-					<name>languageIsoCode</name>
+					<name>sessionLanguage</name>
 					<transformations>
 						<transformation>
 							<rawSource>InboundRawCustomer</rawSource>
@@ -158,17 +125,6 @@
 						</transformation>
 					</transformations>
 				</attribute>
-
-				<attribute>
-					<name>firstName</name>
-					<transformations>
-						<transformation>
-							<rawSource>InboundRawCustomer</rawSource>
-							<expression>firstName</expression>
-						</transformation>
-					</transformations>
-				</attribute>
-
 				<attribute>
 					<name>lastName</name>
 					<transformations>
@@ -179,7 +135,25 @@
 					</transformations>
 				</attribute>
 				<attribute>
-					<name>uid</name>
+					<name>firstName</name>
+					<transformations>
+						<transformation>
+							<rawSource>InboundRawCustomer</rawSource>
+							<expression>firstName</expression>
+						</transformation>
+					</transformations>
+				</attribute>
+				<attribute>
+					<name>middleName</name>
+					<transformations>
+						<transformation>
+							<rawSource>InboundRawCustomer</rawSource>
+							<expression>middleName</expression>
+						</transformation>
+					</transformations>
+				</attribute>
+				<attribute>
+					<name>UID</name>
 					<transformations>
 						<transformation>
 							<rawSource>InboundRawCustomer</rawSource>
@@ -187,8 +161,113 @@
 						</transformation>
 					</transformations>
 				</attribute>
+				<attribute>
+					<name>title</name>
+					<transformations>
+						<transformation>
+							<rawSource>InboundRawCustomer</rawSource>
+							<expression>title</expression>
+						</transformation>
+					</transformations>
+				</attribute>				
 			</attributes>
-		</item> 
+		</item>
+		<item>
+			<type>InboundCanonicalAddress</type>
+			<attributes>
+				<attribute>
+					<name>customerID</name>
+					<transformations>
+						<transformation>
+							<rawSource>InboundRawCustomer</rawSource>
+							<expression>customerNumber</expression>
+						</transformation>
+					</transformations>
+				</attribute>
+				<attribute>
+					<name>phone1</name>
+					<transformations>
+						<transformation>
+							<rawSource>InboundRawCustomer</rawSource>
+							<expression>contactPhoneA</expression>
+						</transformation>
+					</transformations>
+				</attribute>
+				<attribute>
+					<name>addressID</name>
+					<transformations>
+						<transformation>
+							<rawSource>InboundRawCustomer</rawSource>
+							<expression>addressID</expression>
+						</transformation>
+					</transformations>
+				</attribute>
+				<attribute>
+					<name>street</name>
+					<transformations>
+						<transformation>
+							<rawSource>InboundRawCustomer</rawSource>
+							<expression>street</expression>
+						</transformation>
+					</transformations>
+				</attribute>
+				<attribute>
+					<name>streetNumber</name>
+					<transformations>
+						<transformation>
+							<rawSource>InboundRawCustomer</rawSource>
+							<expression>streetNumber</expression>
+						</transformation>
+					</transformations>
+				</attribute>
+				<attribute>
+					<name>zipCode</name>
+					<transformations>
+						<transformation>
+							<rawSource>InboundRawCustomer</rawSource>
+							<expression>zipCode</expression>
+						</transformation>
+					</transformations>
+				</attribute>
+				<attribute>
+					<name>addressType</name>
+					<transformations>
+						<transformation>
+							<rawSource>InboundRawCustomer</rawSource>
+							<expression>tag</expression>
+						</transformation>
+					</transformations>
+				</attribute>
+				<attribute>
+					<name>city</name>
+					<transformations>
+						<transformation>
+							<rawSource>InboundRawCustomer</rawSource>
+							<expression>city</expression>
+						</transformation>
+					</transformations>
+				</attribute>
+				<attribute>
+					<name>country</name>
+					<transformations>
+						<transformation>
+							<rawSource>InboundRawCustomer</rawSource>
+							<expression>country</expression>
+						</transformation>
+					</transformations>
+				</attribute>
+				<attribute>
+					<name>state</name>
+					<transformations>
+						<transformation>
+							<rawSource>InboundRawCustomer</rawSource>
+							<expression>state</expression>
+						</transformation>
+					</transformations>
+				</attribute>									
+			</attributes>
+		</item>
+
 	</canonicalItems>
 
 </extension>

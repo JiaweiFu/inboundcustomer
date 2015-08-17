@@ -13,40 +13,13 @@
 		   xsi:schemaLocation="http://www.hybris.com/schema/ datahub-metadata-schema-1.1.0.xsd" name="inboundcustomer-canonical">
 
 	<canonicalItems>
-        <item>
-            <type>InboundCanonicalCustomer</type>
-            <description>Canonical representation of the customer</description>
-            <status />
-            <!-- defaults to ACTIVE -->
-            <attributes>
-                <attribute>
-                    <name>customerId</name>
-                    <model>
-                        <localizable>false</localizable>
-                        <collection>false</collection>
-                        <type>String</type>
-                        <primaryKey>true</primaryKey>
-                    </model>
-                </attribute>
-                <attribute>
-                    <name>name</name>
-                    <model>
-                        <localizable>false</localizable>
-                        <collection>false</collection>
-                        <type>String</type>
-                        <primaryKey>false</primaryKey>
-                    </model>
-                </attribute>
-            </attributes>
-        </item>
-        <item>
-			<type>InboundCanonicalContact</type>
-			<description>Canonical representation of the contact</description>
-			<!-- defaults to ACTIVE -->
-			<status />
+		<item>
+			<type>InboundCanonicalCustomer</type>
+			<description>Canonical representation of Yaas Customer</description>
+			<status>ACTIVE</status>
 			<attributes>
 				<attribute>
-					<name>contactId</name>
+					<name>customerID</name>
 					<model>
 						<localizable>false</localizable>
 						<collection>false</collection>
@@ -55,17 +28,7 @@
 					</model>
 				</attribute>
 				<attribute>
-					<name>customerId</name>
-					<model>
-						<localizable>false</localizable>
-						<collection>false</collection>
-						<type>String</type>
-						<primaryKey>false</primaryKey>
-					</model>
-				</attribute>
-
-				<attribute>
-					<name>titleCode</name>
+					<name>phone1</name>
 					<model>
 						<localizable>false</localizable>
 						<collection>false</collection>
@@ -74,7 +37,7 @@
 					</model>
 				</attribute>
 				<attribute>
-					<name>languageIsoCode</name>
+					<name>sessionLanguage</name>
 					<model>
 						<localizable>false</localizable>
 						<collection>false</collection>
@@ -82,7 +45,6 @@
 						<primaryKey>false</primaryKey>
 					</model>
 				</attribute>
-
 				<attribute>
 					<name>firstName</name>
 					<model>
@@ -92,7 +54,6 @@
 						<primaryKey>false</primaryKey>
 					</model>
 				</attribute>
-
 				<attribute>
 					<name>lastName</name>
 					<model>
@@ -103,7 +64,25 @@
 					</model>
 				</attribute>
 				<attribute>
-					<name>uid</name>
+					<name>middleName</name>
+					<model>
+						<localizable>false</localizable>
+						<collection>false</collection>
+						<type>String</type>
+						<primaryKey>false</primaryKey>
+					</model>
+				</attribute>
+				<attribute>
+					<name>UID</name>
+					<model>
+						<localizable>false</localizable>
+						<collection>false</collection>
+						<type>String</type>
+						<primaryKey>false</primaryKey>
+					</model>
+				</attribute>
+				<attribute>
+					<name>title</name>
 					<model>
 						<localizable>false</localizable>
 						<collection>false</collection>
